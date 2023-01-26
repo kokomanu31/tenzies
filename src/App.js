@@ -1,9 +1,24 @@
 import React from "react";
+import i18next from "i18next";
+import { useTranslation } from "react-i18next";
 import Die from "./components/Die";
+
+const languages = [
+    {
+        code: 'fr',
+        json: 'language_fr'
+    },
+    {
+        code: 'en',
+        json: 'language_en'
+    }
+];
 
 export default function App() {
     const [dice, setDice] = React.useState(allNewDice());
     const [isTenzies, setIsTenzies] = React.useState(false);
+
+    const { t } = useTranslation();
 
     React.useEffect(() => {
         let areAllHeld = dice.every(die => die.isHeld);
@@ -11,8 +26,9 @@ export default function App() {
         let areSameValue = dice.every(die => die.value === firstValue);
         if (areAllHeld && areSameValue) {
             setIsTenzies(true);
+            alert(t("win"));
         }
-    }, [dice]);
+    }, [dice, t]);
 
     function allNewDice() {
         const dice = [];
@@ -52,9 +68,18 @@ export default function App() {
 
     return (
         <main className="container">
-            <h1 className="title">Tenzies</h1>
-            <p className="instructions">Roll until all dice are the same.
-                Click each die to freeze it atits current value between rolls.</p>
+            <div>
+                {languages.map(language => (
+                    <button
+                        key={language.code}
+                        onClick={() => i18next.changeLanguage(language.code)}
+                    >
+                        {t(language.json)}
+                    </button>
+                ))}
+            </div>
+            <h1 className="title">{t('app_name')}</h1>
+            <p className="instructions">{t('instructions')}</p>
             <div className="dice-container">
                 {dice.map(die => (
                     <Die
@@ -69,7 +94,7 @@ export default function App() {
                 className="roll-button"
                 onClick={rollDice}
             >
-                {isTenzies ? "New Game" : "Roll"}
+                {isTenzies ? t('new_game') : t('roll')}
             </button>
         </main>
     )

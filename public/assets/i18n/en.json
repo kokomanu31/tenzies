@@ -1,0 +1,9 @@
+{
+  "app_name": "Tenzies",
+  "instructions": "Roll until all dice are the same.\nClick each die to freeze it's current value between rolls.",
+  "roll": "Roll",
+  "win": "You won!",
+  "new_game": "New Game",
+  "language_en": "English",
+  "language_fr": "French"
+}

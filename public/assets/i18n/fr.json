@@ -1,0 +1,9 @@
+{
+  "app_name": "Tenzies",
+  "instructions": "Lancer les dés jusqu'à ce qu'ils sont tous pareils.\nAppuyer sur les dés entre les lancées pour garder leurs valeurs actuelles.",
+  "roll": "Lancer",
+  "win": "Vous avez gagné!",
+  "new_game": "Nouvelle partie",
+  "language_en": "Anglais",
+  "language_fr": "Français"
+}
